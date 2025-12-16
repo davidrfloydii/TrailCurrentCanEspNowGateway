@@ -13,6 +13,7 @@ namespace canHelper
     {
         // Initialize configuration structures using macro initializers
         twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT((gpio_num_t)CAN_TX, (gpio_num_t)CAN_RX, TWAI_MODE_NO_ACK);
+        g_config.rx_queue_len = 20; // Increase RX queue length to hold more messages
         twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS(); // Look in the api-reference for other speed sets.
         // Filter to only listen for messages from a single extended can identifier. Will need to be changed once we have
         // two different senders. One for on/off and another for 0 >> 255 values.
@@ -58,6 +59,8 @@ namespace canHelper
 
     static void handle_rx_message(twai_message_t &message)
     {
+        debug("Received CAN message with ID: 0x");
+        debugln(message.identifier);
         outgoingMessage.identifier = message.identifier;
         outgoingMessage.data_length_code = message.data_length_code;
         if (message.data_length_code = 8)
