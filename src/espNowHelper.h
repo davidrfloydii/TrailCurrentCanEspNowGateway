@@ -35,17 +35,9 @@ namespace espNowHelper
 
     void sendData()
     {
-        debug("Identifier: ");
-        debugln(outgoingMessage.identifier);
-        debug("Data Length Code: ");
-        debugln(outgoingMessage.data_length_code);
-        Serial.printf("Data Bytes: ", HEX);
         for (int i = 0; i < outgoingMessage.data_length_code; i++)
         {           
-            Serial.printf("0x", HEX);
             uint8_t address = *(&outgoingMessage.dataByte0 + i);
-            Serial.printf(String(address).c_str(), HEX);
-            Serial.printf(" ", HEX);
         }
         esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&outgoingMessage, sizeof(outgoingMessage));
         if (result == ESP_OK)
