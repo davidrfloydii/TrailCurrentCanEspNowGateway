@@ -101,6 +101,7 @@
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
         "text_height": "warning",
+        "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -128,11 +129,11 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.2,
         "min_track_width": 0.0,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -439,6 +440,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -449,7 +451,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "trailcurrent-can-esp-now-gateway.kicad_pro",
+    "filename": "trailecurrent-can-to-espnow-gateway.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -485,10 +487,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "output/",
-      "pos_files": "",
+      "plot": "",
+      "pos_files": "production/",
       "specctra_dsn": "",
-      "step": "../../CAD/trailer-temp-sensor.step",
+      "step": "../../CAD/trailer-shunt-can-bus.step",
       "svg": "",
       "vrml": ""
     },
@@ -609,8 +611,24 @@
   },
   "sheets": [
     [
-      "4baabe42-962d-4f17-9537-3da551a4d967",
+      "e43102a4-dd6f-4d32-bd6d-4c06b17a0389",
       "Root"
+    ],
+    [
+      "5e03bf2b-dca2-46ef-acb8-5634dd421c83",
+      "Power"
+    ],
+    [
+      "378d6d6e-d650-4477-83a4-df54e9436f51",
+      "CAN"
+    ],
+    [
+      "0b0d8537-85d8-48c3-8ee8-bfcf50b44470",
+      "MCU"
+    ],
+    [
+      "49f4bb7e-8293-4f83-8e67-ff85c9912e18",
+      "Connectivity"
     ]
   ],
   "text_variables": {}
