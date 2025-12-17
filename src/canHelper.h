@@ -1,10 +1,10 @@
 #pragma once
 #include "globals.h"
-
+#include "espNowHelper.h"
 #define CAN_RX 13
 #define CAN_TX 15
 // Interval:
-#define POLLING_RATE_MS 33
+#define POLLING_RATE_MS 1000
 static bool driver_installed = false;
 
 namespace canHelper
@@ -13,7 +13,7 @@ namespace canHelper
     {
         // Initialize configuration structures using macro initializers
         twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT((gpio_num_t)CAN_TX, (gpio_num_t)CAN_RX, TWAI_MODE_NO_ACK);
-        g_config.rx_queue_len = 20; // Increase RX queue length to hold more messages
+        // g_config.rx_queue_len = 20; // Increase RX queue length to hold more messages
         twai_timing_config_t t_config = TWAI_TIMING_CONFIG_500KBITS(); // Look in the api-reference for other speed sets.
         // Filter to only listen for messages from a single extended can identifier. Will need to be changed once we have
         // two different senders. One for on/off and another for 0 >> 255 values.
@@ -128,6 +128,7 @@ namespace canHelper
             outgoingMessage.dataByte0 = 0;
         }
         newDataToSend = true;
+        espNowHelper::sendData();
     }
 
     void checkCanBusForMessages()
