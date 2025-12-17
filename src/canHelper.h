@@ -4,7 +4,7 @@
 #define CAN_RX 13
 #define CAN_TX 15
 // Interval:
-#define POLLING_RATE_MS 1000
+#define POLLING_RATE_MS 33
 static bool driver_installed = false;
 
 namespace canHelper
